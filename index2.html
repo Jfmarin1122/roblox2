@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Robux - Roblox</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: url('images/fondo_rob.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .title1 { 
+            font-size: xx-large;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: rgb(150, 0, 137);
+        }
+        .title { 
+            font-size: xx-large;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: white;
+        }
+        .item {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: x-large;
+            color: white;
+        }
+        .overlay {
+            background-color: rgba(10, 7, 0, 0.664); /* Fondo semitransparente para resaltar el formulario */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            height: 100%; /* Asegura que la altura ocupe toda la pantalla */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            /*background-color: #ffffff;*/
+            background-image: url('images/logo.png');
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px; /* Controla el ancho máximo del formulario */
+        }
+        .btn-custom {
+            background-color: #FFC107;
+            border: none;
+            color: #4a4a4a;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-custom:hover {
+            background-color: #FFA000;
+            color: #fff;
+            transform: scale(1.05);
+        }
+        .robux-container {
+            display: flex;
+            align-items: center;
+        }
+        .robux-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .button-container {
+            text-align: center; /* Alineación centrada del botón */
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor del formulario con superposición -->
+    <div class="container">
+        <div class="overlay">
+            <div class="card">
+                <img src="images/rob.png" alt="Roblox" class="card-img-top">
+                <div class="card-body">
+                    <div class="overlay">
+                        <h1 class="title1">Generador de Robux</h1><br>
+                        
+                        <!-- Formulario -->
+                        <form id="robuxForm">
+
+                            <div class="mb-3">
+                                <label for="username" class="item">Nombre de Usuario / ID de Roblox</label>
+                                <div class="robux-container">
+                                    <img src="images/user.png" alt="Robux Icon" class="robux-icon">
+                                    <input type="text" class="form-control" id="username" placeholder="Ingrese su nombre de usuario o ID" required><br>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="robuxAmount" class="item">Cantidad de Robux</label><br>
+                                <div class="robux-container">
+                                    <img src="images/robux.png" alt="Robux Icon" class="robux-icon">
+                                    <input type="number" class="form-control" id="robuxAmount" placeholder="Ingrese la cantidad de Robux" required>
+                                </div>
+                            </div> 
+                    </div>
+                            <!-- Contenedor centrado para el botón -->
+                            <div class="button-container">
+                                <button type="submit" class="btn btn-custom">
+                                    <img src="images/robux.png" alt="Generate Icon" class="robux-icon" style="width: 20px; height: 20px; margin-right: 10px;">
+                                    Generar
+                                </button>
+                            </div>
+                        </form>
+                    
+                        <!-- Mensaje de éxito -->
+                        <div class="alert alert-success mt-3" id="successMessage" style="display: none;">
+                            <strong>¡PERFECTO!</strong> Se han generado <span id="robuxGenerated"></span> Robux para el usuario <span id="robloxUser"></span>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script para funcionalidad -->
+    <script>
+        document.getElementById('robuxForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const robuxAmount = document.getElementById('robuxAmount').value;
+
+            // Simular la generación de Robux
+            document.getElementById('robloxUser').textContent = username;
+            document.getElementById('robuxGenerated').textContent = robuxAmount;
+
+            // Mostrar mensaje de éxito
+            document.getElementById('successMessage').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
