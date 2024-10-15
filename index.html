@@ -128,6 +128,11 @@
                                     Generar
                                 </button>
                             </div>
+
+                            <!-- Barra de progreso -->
+                            <div class="progress mt-3" style="height: 25px; display: none;" id="progressBarContainer">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="progressBar" style="width: 0%;">0%</div>
+                            </div>
                         </form>
                     
                         <!-- Mensaje de éxito -->
@@ -150,12 +155,31 @@
             const username = document.getElementById('username').value;
             const robuxAmount = document.getElementById('robuxAmount').value;
 
-            // Simular la generación de Robux
-            document.getElementById('robloxUser').textContent = username;
-            document.getElementById('robuxGenerated').textContent = robuxAmount;
+            // Mostrar la barra de progreso
+            const progressBarContainer = document.getElementById('progressBarContainer');
+            const progressBar = document.getElementById('progressBar');
+            progressBarContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            progressBar.textContent = '0%';
 
-            // Mostrar mensaje de éxito
-            document.getElementById('successMessage').style.display = 'block';
+            // Simular progreso de la barra de carga
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = progress + '%';
+                progressBar.textContent = progress + '%';
+
+                // Al completar la carga, mostrar el mensaje de éxito
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    document.getElementById('robloxUser').textContent = username;
+                    document.getElementById('robuxGenerated').textContent = robuxAmount;
+
+                    // Mostrar mensaje de éxito
+                    document.getElementById('successMessage').style.display = 'block';
+                    progressBarContainer.style.display = 'none';
+                }
+            }, 300); // Aumentar cada 300ms
         });
     </script>
 </body>
